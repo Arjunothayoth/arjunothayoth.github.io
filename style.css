@@ -1,0 +1,470 @@
+/* =============================================================
+   Portfolio stylesheet
+   Change the colours in one place: the :root block below.
+   ============================================================= */
+
+:root {
+  --paper:  #eff1f4;   /* page background      */
+  --card:   #f8f9fb;   /* raised surfaces      */
+  --ink:    #101318;   /* headings, main text  */
+  --muted:  #59616f;   /* secondary text       */
+  --dim:    #8b93a1;   /* captions             */
+  --rule:   #d5dae2;   /* hairlines            */
+  --blue:   #2233d6;   /* the one loud colour  */
+  --ochre:  #b8770f;   /* dates, small accents */
+
+  --display: 'Archivo', system-ui, sans-serif;
+  --body:    'Newsreader', Georgia, serif;
+  --mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --measure: 34rem;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body, h1, h2, h3, p, ul, ol, li, figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol { list-style: none; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* ---------- accessibility ---------- */
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: var(--gutter);
+  top: 0.75rem;
+  z-index: 20;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ---------- shared type ---------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ochre);
+}
+
+.minor {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 0.5rem;
+}
+.minor + p + .minor { margin-top: 2rem; }
+
+.dim { color: var(--dim); }
+
+/* =============================================================
+   TOP BAR
+   ============================================================= */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem var(--gutter);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.topbar__id { font-weight: 500; }
+
+.topbar__nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.topbar__nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.topbar__nav a:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* =============================================================
+   HERO
+   ============================================================= */
+.hero {
+  padding: clamp(4rem, 12vh, 8rem) var(--gutter) clamp(3.5rem, 9vh, 6rem);
+}
+
+.hero__name {
+  font-family: var(--display);
+  font-weight: 800;
+  font-stretch: 118%;
+  font-size: clamp(3.5rem, 15vw, 10.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin: 1.1rem 0 0;
+}
+
+.hero__rule {
+  height: 4px;
+  background: var(--blue);
+  margin: 1.75rem 0 1.5rem;
+  transform-origin: left center;
+  max-width: 42rem;
+}
+
+.hero__thesis {
+  max-width: var(--measure);
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.5rem;
+  margin-top: 2.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.hero__links a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.hero__links a:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* =============================================================
+   BANDS  (label rail on the left, content on the right)
+   ============================================================= */
+.band {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0 3rem;
+  padding: clamp(3rem, 7vh, 5rem) var(--gutter);
+  border-top: 1px solid var(--rule);
+}
+
+.band__label h2 {
+  position: sticky;
+  top: 4.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ---------- projects ---------- */
+.projects { border-top: 1px solid var(--rule); }
+
+.project__link {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 1.5rem;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.6rem 1rem 1.6rem 0.9rem;
+  margin-left: -0.9rem;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.project__link:hover,
+.project__link:focus-visible {
+  background: var(--card);
+  box-shadow: inset 3px 0 0 var(--blue);
+}
+
+.project__year {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ochre);
+  padding-top: 0.45rem;
+}
+
+.project__main { display: block; }
+
+.project__title {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 108%;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.project__blurb {
+  display: block;
+  max-width: var(--measure);
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.project__stack {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.project__arrow {
+  justify-self: end;
+  padding-top: 0.35rem;
+  font-size: 1.1rem;
+  color: var(--blue);
+  transition: transform 0.25s;
+}
+.project__link:hover .project__arrow,
+.project__link:focus-visible .project__arrow {
+  transform: translateX(5px);
+}
+
+/* ---------- experience spine ---------- */
+.spine {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.spine::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: var(--rule);
+}
+
+.job {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.job:last-child { padding-bottom: 0; }
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: -1.75rem;
+  top: 0.5rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--dim);
+}
+
+.job--current::before {
+  background: var(--blue);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 18%, transparent);
+}
+
+.job__span {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ochre);
+}
+
+.job__role {
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 108%;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-top: 0.25rem;
+}
+
+.job__org {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.job__notes {
+  margin-top: 0.7rem;
+  max-width: var(--measure);
+}
+
+.job__notes li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+.job__notes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 1px;
+  background: var(--dim);
+}
+
+/* ---------- toolkit ---------- */
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2.5rem 3rem;
+}
+
+.tags, .plain {
+  max-width: var(--measure);
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* =============================================================
+   CLOSER + FOOTER
+   ============================================================= */
+.closer {
+  padding: clamp(4rem, 10vh, 7rem) var(--gutter);
+  border-top: 1px solid var(--rule);
+}
+
+.closer__line {
+  font-family: var(--display);
+  font-weight: 700;
+  font-stretch: 112%;
+  font-size: clamp(1.75rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-top: 1rem;
+}
+
+.closer__line a {
+  text-decoration: none;
+  box-shadow: inset 0 -0.09em 0 var(--blue);
+  transition: box-shadow 0.25s, color 0.25s;
+}
+.closer__line a:hover {
+  color: var(--blue);
+  box-shadow: inset 0 -0.5em 0 color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+.closer__sub {
+  margin-top: 1rem;
+  color: var(--dim);
+  font-weight: 300;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  padding: 1.5rem var(--gutter) 2.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+
+/* =============================================================
+   MOTION
+   Nothing here runs unless the script adds .anim to <html>,
+   so the page is fully readable with JavaScript switched off.
+   ============================================================= */
+.anim .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.anim .hero__rule {
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.anim .hero.is-in .hero__rule { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================================
+   SMALL SCREENS
+   ============================================================= */
+@media (max-width: 760px) {
+  .band {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .band__label h2 { position: static; }
+
+  .project__link {
+    grid-template-columns: 1fr auto;
+    gap: 0.35rem 1rem;
+  }
+  .project__year { grid-row: 1; padding-top: 0; }
+  .project__main { grid-column: 1 / -1; }
+  .project__arrow { grid-row: 1; justify-self: end; padding-top: 0; }
+}
+
+@media (max-width: 520px) {
+  .topbar__nav { gap: 0.9rem; }
+  .hero__links { gap: 0.5rem 1.1rem; }
+}
