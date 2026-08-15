@@ -4,18 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ============================================================
-     EDIT THESE FIRST
-     1. <title> below  2. the description  3. every "Your Name"
-     4. the email / GitHub / LinkedIn links  5. work + experience
-     ============================================================ -->
+<title>Arjun Othayoth — Technical Lead, Mobile Apps</title>
+<meta name="description" content="Portfolio of Arjun Othayoth, a Technical Lead for mobile apps based in Bengaluru building Android & Flutter telecom and fintech apps deployed across Oman, Fiji, Malawi, and Bhutan.">
 
-<title>Your Name — Full-stack Developer</title>
-<meta name="description" content="Portfolio and resume of Your Name, a full-stack developer based in Bengaluru.">
+<meta name="theme-color" content="#101219">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -24,9 +20,12 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="topbar">
-  <span class="topbar__id">Your Name</span>
+  <a class="brand" href="#top" aria-label="Home">
+    <span class="brand__mark" aria-hidden="true"></span>
+    <span class="brand__name">Arjun Othayoth</span>
+  </a>
   <nav class="topbar__nav">
-    <a href="#work">Work</a>
+    <a href="#work" class="is-active">Work</a>
     <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -35,21 +34,80 @@
 <main id="main">
 
   <!-- ---------- HERO ---------- -->
-  <section class="hero reveal">
-    <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; Open to new roles</p>
-    <h1 class="hero__name">Your<br>Name</h1>
-    <div class="hero__rule" aria-hidden="true"></div>
-    <p class="hero__thesis">
-      I build web applications end to end — the database schema, the API that
-      feeds it, and the interface people actually touch. Five years of shipping
-      software that stayed shipped.
-    </p>
-    <ul class="hero__links">
-      <li><a href="mailto:you@example.com">you@example.com</a></li>
-      <li><a href="https://github.com/yourusername">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/yourusername">LinkedIn</a></li>
-      <li><a href="resume.pdf">Resume (PDF)</a></li>
-    </ul>
+  <section class="hero reveal" id="top">
+    <div class="hero__intro">
+      <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; Technical Lead — Mobile Apps</p>
+      <h1 class="hero__name">Arjun<br>Othayoth<span class="dot">.</span></h1>
+      <div class="hero__rule" aria-hidden="true"></div>
+      <ul class="hero__links">
+        <li><a href="mailto:arjun.o@6dtech.co.in">arjun.o@6dtech.co.in</a></li>
+        <li><a href="https://github.com/arjunothayoth">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/arjunothayoth/">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <!-- Swap the monogram for a photo: replace the <span class="monogram">
+         with <img src="me.jpg" alt="Arjun Othayoth"> -->
+    <div class="hero__portrait" aria-hidden="true">
+      <span class="monogram">AO</span>
+      <span class="hero__badge">Available for work</span>
+    </div>
+
+    <aside class="hero__aside">
+      <p class="label">Introduction</p>
+      <p class="hero__thesis">Technical lead for mobile apps, based in Bengaluru.</p>
+      <p class="hero__desc">
+        I build Android and Flutter apps for telecom and fintech — recharge,
+        e-vouchers, and mobile money — shipped on phones and POS machines across
+        Oman, Fiji, Malawi, and Bhutan.
+      </p>
+      <a class="arrow-link" href="#work">See my work <span aria-hidden="true">&rarr;</span></a>
+    </aside>
+  </section>
+
+  <!-- ---------- STATS ---------- -->
+  <section class="stats reveal">
+    <div class="stat">
+      <span class="stat__num">9</span>
+      <span class="stat__label">Years building<br>mobile apps</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">4</span>
+      <span class="stat__label">Countries<br>deployed in</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">5+</span>
+      <span class="stat__label">Apps<br>shipped</span>
+    </div>
+  </section>
+
+  <!-- ---------- WHAT I DO ---------- -->
+  <section class="band" id="services">
+    <div class="band__label"><h2>What I do</h2></div>
+
+    <div class="band__body">
+      <div class="cards">
+
+        <article class="card card--accent">
+          <span class="card__icon" aria-hidden="true">&#9671;</span>
+          <h3 class="card__title">Android<br>Engineering</h3>
+          <p class="card__meta">Kotlin · Java</p>
+        </article>
+
+        <article class="card">
+          <span class="card__icon" aria-hidden="true">&#9741;</span>
+          <h3 class="card__title">Flutter &amp;<br>Cross-platform</h3>
+          <p class="card__meta">Dart · Firebase</p>
+        </article>
+
+        <article class="card">
+          <span class="card__icon" aria-hidden="true">&#9635;</span>
+          <h3 class="card__title">Fintech<br>&amp; POS</h3>
+          <p class="card__meta">NFC · Payments · Printing</p>
+        </article>
+
+      </div>
+    </div>
   </section>
 
   <!-- ---------- SELECTED WORK ---------- -->
@@ -60,45 +118,75 @@
       <ul class="projects">
 
         <li class="project reveal">
-          <a class="project__link" href="https://github.com/yourusername/project-one">
-            <span class="project__year">2025</span>
+          <a class="project__link" href="https://www.linkedin.com/in/arjunothayoth/details/projects/">
+            <span class="project__year">2017 &rarr; now</span>
             <span class="project__main">
-              <span class="project__title">Ledgerly</span>
+              <span class="project__title">Vodafone eTopUp — Fiji</span>
               <span class="project__blurb">
-                A small-business invoicing tool. Handles recurring billing,
-                partial payments, and tax rules for three countries.
+                Mobile recharge and M-PAiSA mobile-money app with receipt
+                printing and NFC, running on POS machines across Fiji.
               </span>
-              <span class="project__stack">React · Node · PostgreSQL · Stripe</span>
+              <span class="project__stack">Flutter · Dart · NFC · Firebase</span>
             </span>
             <span class="project__arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
 
         <li class="project reveal">
-          <a class="project__link" href="https://github.com/yourusername/project-two">
-            <span class="project__year">2024</span>
+          <a class="project__link" href="https://www.linkedin.com/in/arjunothayoth/details/projects/">
+            <span class="project__year">2017 &rarr; now</span>
             <span class="project__main">
-              <span class="project__title">Transit Board</span>
+              <span class="project__title">Ooredoo eTopUp POS — Oman</span>
               <span class="project__blurb">
-                Live bus arrivals for Bengaluru on a single screen. Caches the
-                city feed so it still works when the upstream API doesn't.
+                Recharge and e-voucher printing for Android phones and POS
+                terminals, with offline and online transactions. Deployed in Oman.
               </span>
-              <span class="project__stack">TypeScript · Redis · Leaflet</span>
+              <span class="project__stack">Android · Kotlin · POS SDK</span>
             </span>
             <span class="project__arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
 
         <li class="project reveal">
-          <a class="project__link" href="https://github.com/yourusername/project-three">
-            <span class="project__year">2023</span>
+          <a class="project__link" href="https://www.linkedin.com/in/arjunothayoth/details/projects/">
+            <span class="project__year">2019 &rarr; 2020</span>
             <span class="project__main">
-              <span class="project__title">Quiet Hours</span>
+              <span class="project__title">eTeeru — TashiCell, Bhutan</span>
               <span class="project__blurb">
-                A focus timer that blocks nothing and shames no one. 4,000
-                weekly users, no accounts, no analytics.
+                Mobile-money wallet for TashiCell: QR merchant payments, mobile
+                recharge, bill payments, and P2P e-money transfers.
               </span>
-              <span class="project__stack">Svelte · IndexedDB</span>
+              <span class="project__stack">Android · Java · QR · Mobile Money</span>
+            </span>
+            <span class="project__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+
+        <li class="project reveal">
+          <a class="project__link" href="https://play.google.com/store/apps/details?id=com.sixdee.malawi">
+            <span class="project__year">2020</span>
+            <span class="project__main">
+              <span class="project__title">TNM PompoPompo+ — Malawi</span>
+              <span class="project__blurb">
+                Voucher-less airtime sales and bundle subscriptions for TNM.
+                Live on the Google Play Store.
+              </span>
+              <span class="project__stack">Android · Java</span>
+            </span>
+            <span class="project__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+
+        <li class="project reveal">
+          <a class="project__link" href="https://play.google.com/store/apps/details?id=com.app.arjuno.imagedecodemessage">
+            <span class="project__year">2018 &rarr; 2019</span>
+            <span class="project__main">
+              <span class="project__title">Secure Message</span>
+              <span class="project__blurb">
+                A personal app that hides a text message inside an image
+                (steganography) to share over social media or Bluetooth.
+              </span>
+              <span class="project__stack">Android · Java · Steganography</span>
             </span>
             <span class="project__arrow" aria-hidden="true">&rarr;</span>
           </a>
@@ -116,31 +204,13 @@
       <ol class="spine">
 
         <li class="job job--current reveal">
-          <p class="job__span">2023&thinsp;&mdash;&thinsp;now</p>
-          <h3 class="job__role">Senior Software Engineer</h3>
-          <p class="job__org">Acme Systems, Bengaluru</p>
+          <p class="job__span">2017&thinsp;&mdash;&thinsp;now</p>
+          <h3 class="job__role">Technical Lead</h3>
+          <p class="job__org">6D Technologies, Bengaluru</p>
           <ul class="job__notes">
-            <li>Led the rewrite of the billing service, cutting failed charges by 34%.</li>
-            <li>Mentor two junior engineers; run the weekly design review.</li>
-          </ul>
-        </li>
-
-        <li class="job reveal">
-          <p class="job__span">2021&thinsp;&mdash;&thinsp;2023</p>
-          <h3 class="job__role">Software Engineer</h3>
-          <p class="job__org">Northwind Labs, Remote</p>
-          <ul class="job__notes">
-            <li>Built the customer dashboard used daily by 12,000 accounts.</li>
-            <li>Moved the test suite from 40 minutes to 6 by parallelising CI.</li>
-          </ul>
-        </li>
-
-        <li class="job reveal">
-          <p class="job__span">2020&thinsp;&mdash;&thinsp;2021</p>
-          <h3 class="job__role">Junior Developer</h3>
-          <p class="job__org">Bright Interactive, Bengaluru</p>
-          <ul class="job__notes">
-            <li>Shipped marketing sites and internal tools for eight clients.</li>
+            <li>Build Android and Flutter apps for telecom recharge, e-vouchers, and mobile money, deployed across Oman, Fiji, Malawi, and Bhutan.</li>
+            <li>Ship POS-integrated apps with receipt printing, NFC, and offline-first transaction sync.</li>
+            <li>Own releases end to end — from API integration to Google Play deployment.</li>
           </ul>
         </li>
 
@@ -156,21 +226,28 @@
       <div class="cols">
         <div class="reveal">
           <h3 class="minor">Everyday</h3>
-          <p class="tags">JavaScript · TypeScript · React · Node · Python · PostgreSQL · Git</p>
+          <p class="tags">Kotlin · Java · Flutter · Dart · Android SDK · Firebase · Git</p>
 
           <h3 class="minor">Comfortable with</h3>
-          <p class="tags">Docker · AWS · Redis · GraphQL · Playwright · Figma</p>
+          <p class="tags">Riverpod · Dio · NFC · POS integration · SQLite · REST APIs</p>
         </div>
 
         <div class="reveal">
+          <h3 class="minor">Certifications</h3>
+          <p class="plain">
+            Claude Code 101 &mdash; Anthropic, 2026<br>
+            Introduction to Agent Skills &mdash; Anthropic, 2026<br>
+            Fundamentals of Agents &mdash; Hugging Face, 2026
+          </p>
+
           <h3 class="minor">Education</h3>
           <p class="plain">
-            B.E. Computer Science<br>
-            <span class="dim">Visvesvaraya Technological University, 2020</span>
+            B.Tech<br>
+            <span class="dim">University of Calicut, 2012 &ndash; 2016</span>
           </p>
 
           <h3 class="minor">Languages</h3>
-          <p class="plain">English, Hindi, Kannada</p>
+          <p class="plain">English, Malayalam</p>
         </div>
       </div>
     </div>
@@ -178,17 +255,18 @@
 
   <!-- ---------- CONTACT ---------- -->
   <section class="closer" id="contact">
-    <p class="eyebrow">Currently taking on new work</p>
+    <p class="label">Contact</p>
     <p class="closer__line">
-      Write to <a href="mailto:you@example.com">you@example.com</a>
+      Let&rsquo;s build something.<br>
+      Write to <a href="mailto:arjun.o@6dtech.co.in">arjun.o@6dtech.co.in</a>
     </p>
-    <p class="closer__sub">Usually replies within a day.</p>
+    <p class="closer__sub">Available for work &mdash; usually replies within a day.</p>
   </section>
 
 </main>
 
 <footer class="foot">
-  <span>&copy; 2026 Your Name</span>
+  <span>&copy; 2026 Arjun Othayoth</span>
   <span>Built by hand, hosted on GitHub Pages</span>
 </footer>
 
