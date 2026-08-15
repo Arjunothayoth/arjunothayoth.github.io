@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     EDIT THESE FIRST
+     1. <title> below  2. the description  3. every "Your Name"
+     4. the email / GitHub / LinkedIn links  5. work + experience
+     ============================================================ -->
+
+<title>Your Name — Full-stack Developer</title>
+<meta name="description" content="Portfolio and resume of Your Name, a full-stack developer based in Bengaluru.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300..500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <span class="topbar__id">Your Name</span>
+  <nav class="topbar__nav">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ---------- HERO ---------- -->
+  <section class="hero reveal">
+    <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; Open to new roles</p>
+    <h1 class="hero__name">Your<br>Name</h1>
+    <div class="hero__rule" aria-hidden="true"></div>
+    <p class="hero__thesis">
+      I build web applications end to end — the database schema, the API that
+      feeds it, and the interface people actually touch. Five years of shipping
+      software that stayed shipped.
+    </p>
+    <ul class="hero__links">
+      <li><a href="mailto:you@example.com">you@example.com</a></li>
+      <li><a href="https://github.com/yourusername">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/yourusername">LinkedIn</a></li>
+      <li><a href="resume.pdf">Resume (PDF)</a></li>
+    </ul>
+  </section>
+
+  <!-- ---------- SELECTED WORK ---------- -->
+  <section class="band" id="work">
+    <div class="band__label"><h2>Selected work</h2></div>
+
+    <div class="band__body">
+      <ul class="projects">
+
+        <li class="project reveal">
+          <a class="project__link" href="https://github.com/yourusername/project-one">
+            <span class="project__year">2025</span>
+            <span class="project__main">
+              <span class="project__title">Ledgerly</span>
+              <span class="project__blurb">
+                A small-business invoicing tool. Handles recurring billing,
+                partial payments, and tax rules for three countries.
+              </span>
+              <span class="project__stack">React · Node · PostgreSQL · Stripe</span>
+            </span>
+            <span class="project__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+
+        <li class="project reveal">
+          <a class="project__link" href="https://github.com/yourusername/project-two">
+            <span class="project__year">2024</span>
+            <span class="project__main">
+              <span class="project__title">Transit Board</span>
+              <span class="project__blurb">
+                Live bus arrivals for Bengaluru on a single screen. Caches the
+                city feed so it still works when the upstream API doesn't.
+              </span>
+              <span class="project__stack">TypeScript · Redis · Leaflet</span>
+            </span>
+            <span class="project__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+
+        <li class="project reveal">
+          <a class="project__link" href="https://github.com/yourusername/project-three">
+            <span class="project__year">2023</span>
+            <span class="project__main">
+              <span class="project__title">Quiet Hours</span>
+              <span class="project__blurb">
+                A focus timer that blocks nothing and shames no one. 4,000
+                weekly users, no accounts, no analytics.
+              </span>
+              <span class="project__stack">Svelte · IndexedDB</span>
+            </span>
+            <span class="project__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- EXPERIENCE (the spine) ---------- -->
+  <section class="band" id="experience">
+    <div class="band__label"><h2>Experience</h2></div>
+
+    <div class="band__body">
+      <ol class="spine">
+
+        <li class="job job--current reveal">
+          <p class="job__span">2023&thinsp;&mdash;&thinsp;now</p>
+          <h3 class="job__role">Senior Software Engineer</h3>
+          <p class="job__org">Acme Systems, Bengaluru</p>
+          <ul class="job__notes">
+            <li>Led the rewrite of the billing service, cutting failed charges by 34%.</li>
+            <li>Mentor two junior engineers; run the weekly design review.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <p class="job__span">2021&thinsp;&mdash;&thinsp;2023</p>
+          <h3 class="job__role">Software Engineer</h3>
+          <p class="job__org">Northwind Labs, Remote</p>
+          <ul class="job__notes">
+            <li>Built the customer dashboard used daily by 12,000 accounts.</li>
+            <li>Moved the test suite from 40 minutes to 6 by parallelising CI.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <p class="job__span">2020&thinsp;&mdash;&thinsp;2021</p>
+          <h3 class="job__role">Junior Developer</h3>
+          <p class="job__org">Bright Interactive, Bengaluru</p>
+          <ul class="job__notes">
+            <li>Shipped marketing sites and internal tools for eight clients.</li>
+          </ul>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ---------- SKILLS + EDUCATION ---------- -->
+  <section class="band" id="about">
+    <div class="band__label"><h2>Toolkit</h2></div>
+
+    <div class="band__body">
+      <div class="cols">
+        <div class="reveal">
+          <h3 class="minor">Everyday</h3>
+          <p class="tags">JavaScript · TypeScript · React · Node · Python · PostgreSQL · Git</p>
+
+          <h3 class="minor">Comfortable with</h3>
+          <p class="tags">Docker · AWS · Redis · GraphQL · Playwright · Figma</p>
+        </div>
+
+        <div class="reveal">
+          <h3 class="minor">Education</h3>
+          <p class="plain">
+            B.E. Computer Science<br>
+            <span class="dim">Visvesvaraya Technological University, 2020</span>
+          </p>
+
+          <h3 class="minor">Languages</h3>
+          <p class="plain">English, Hindi, Kannada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT ---------- -->
+  <section class="closer" id="contact">
+    <p class="eyebrow">Currently taking on new work</p>
+    <p class="closer__line">
+      Write to <a href="mailto:you@example.com">you@example.com</a>
+    </p>
+    <p class="closer__sub">Usually replies within a day.</p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>&copy; 2026 Your Name</span>
+  <span>Built by hand, hosted on GitHub Pages</span>
+</footer>
+
+<script>
+  // Fade sections in as they enter the viewport. Skipped entirely if the
+  // visitor prefers reduced motion, or if the browser is very old.
+  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (motionOK && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('anim');
+    const seen = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          seen.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el) => seen.observe(el));
+  }
+</script>
+
+</body>
+</html>
