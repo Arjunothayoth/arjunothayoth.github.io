@@ -35,7 +35,7 @@
 <main id="main">
 
   <!-- ---------- HERO ---------- -->
-  <section class="hero reveal" id="top">
+  <section class="hero" id="top">
     <div class="hero__intro">
       <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; Technical Lead — Mobile Apps</p>
       <h1 class="hero__name">Arjun<br>Othayoth<span class="dot">.</span></h1>
@@ -317,6 +317,11 @@
 
   document.documentElement.classList.add('anim');
 
+  /* ---------- hero entrance (runs once on load) ---------- */
+  var heroIn = function () { document.documentElement.classList.add('hero-in'); };
+  requestAnimationFrame(function () { requestAnimationFrame(heroIn); });
+  setTimeout(heroIn, 120); /* fallback if rAF is paused (background tab) */
+
   /* ---------- staggered reveals ---------- */
   [['.projects', '.project'], ['.cards', '.card'], ['.spine', '.job'], ['.cols', '.reveal']]
     .forEach(function (pair) {
@@ -369,9 +374,9 @@
       el.style.setProperty('--mx', x + 'px');
       el.style.setProperty('--my', y + 'px');
       if (canTilt) {
-        var rx = ((y / r.height) - 0.5) * -6;
-        var ry = ((x / r.width) - 0.5) * 6;
-        el.style.transform = 'translateY(-4px) perspective(700px) rotateX(' +
+        var rx = ((y / r.height) - 0.5) * -12;
+        var ry = ((x / r.width) - 0.5) * 12;
+        el.style.transform = 'translateY(-6px) perspective(650px) rotateX(' +
           rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
       }
     });

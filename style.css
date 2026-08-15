@@ -705,11 +705,40 @@ a { color: inherit; }
 .anim .reveal--right { transform: translateX(26px); }
 .anim .reveal--scale { transform: scale(0.94); }
 
+/* ---------- hero entrance (staged, runs once on load) ---------- */
+.anim .hero .eyebrow,
+.anim .hero__name,
+.anim .hero__links,
+.anim .hero__portrait,
+.anim .hero__aside {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.anim .hero .eyebrow   { transition-delay: 0.05s; }
+.anim .hero__name      { transition-delay: 0.15s; }
+.anim .hero__portrait  { transition-delay: 0.35s; }
+.anim .hero__links     { transition-delay: 0.45s; }
+.anim .hero__aside     { transition-delay: 0.55s; }
+
+.anim.hero-in .hero .eyebrow,
+.anim.hero-in .hero__name,
+.anim.hero-in .hero__links,
+.anim.hero-in .hero__portrait,
+.anim.hero-in .hero__aside {
+  opacity: 1;
+  transform: none;
+}
+
+/* the amber rule draws itself after the name lands */
 .anim .hero__rule {
   transform: scaleX(0);
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s;
 }
-.anim .hero.is-in .hero__rule { transform: scaleX(1); }
+.anim.hero-in .hero__rule { transform: scaleX(1); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
