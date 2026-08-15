@@ -636,21 +636,74 @@ a { color: inherit; }
   color: var(--dim);
 }
 
+/* anchor targets clear the sticky header */
+:where(section[id]) { scroll-margin-top: 5rem; }
+
 /* =============================================================
-   MOTION
+   SCROLL PROGRESS BAR
+   ============================================================= */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 30;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--amber), var(--amber-2));
+}
+
+/* =============================================================
+   INTERACTIVE HOVER (spotlight + tilt)
+   .card and .project__link get a soft amber glow that follows
+   the cursor; JS supplies --mx / --my and the tilt transform.
+   ============================================================= */
+.card { transform-style: preserve-3d; will-change: transform; }
+
+.card::before,
+.project__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--amber) 20%, transparent),
+    transparent 62%
+  );
+}
+.card:hover::before,
+.project__link:hover::after { opacity: 1; }
+
+/* accent card is already amber — no glow needed */
+.card--accent::before { display: none; }
+
+.project__link { position: relative; overflow: hidden; }
+
+/* =============================================================
+   MOTION / REVEALS
    Nothing here runs unless the script adds .anim to <html>,
    so the page is fully readable with JavaScript switched off.
    ============================================================= */
 .anim .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0s);
 }
-
 .anim .reveal.is-in {
   opacity: 1;
   transform: none;
 }
+
+/* directional flavours */
+.anim .reveal--left  { transform: translateX(-26px); }
+.anim .reveal--right { transform: translateX(26px); }
+.anim .reveal--scale { transform: scale(0.94); }
 
 .anim .hero__rule {
   transform: scaleX(0);
@@ -664,6 +717,7 @@ a { color: inherit; }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .progress { display: none; }
 }
 
 /* =============================================================

@@ -18,6 +18,7 @@
 
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="topbar">
   <a class="brand" href="#top" aria-label="Home">
@@ -88,19 +89,19 @@
     <div class="band__body">
       <div class="cards">
 
-        <article class="card card--accent">
+        <article class="card card--accent reveal reveal--scale">
           <span class="card__icon" aria-hidden="true">&#9671;</span>
           <h3 class="card__title">Android<br>Engineering</h3>
           <p class="card__meta">Kotlin · Java</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal reveal--scale">
           <span class="card__icon" aria-hidden="true">&#9741;</span>
           <h3 class="card__title">Flutter &amp;<br>Cross-platform</h3>
           <p class="card__meta">Dart · Firebase</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal reveal--scale">
           <span class="card__icon" aria-hidden="true">&#9635;</span>
           <h3 class="card__title">Fintech<br>&amp; POS</h3>
           <p class="card__meta">NFC · Payments · Printing</p>
@@ -271,23 +272,128 @@
 </footer>
 
 <script>
-  // Fade sections in as they enter the viewport. Skipped entirely if the
-  // visitor prefers reduced motion, or if the browser is very old.
-  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  'use strict';
 
-  if (motionOK && 'IntersectionObserver' in window) {
-    document.documentElement.classList.add('anim');
-    const seen = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          seen.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    document.querySelectorAll('.reveal').forEach((el) => seen.observe(el));
+  /* ---------- scroll progress bar (always on, cheap) ---------- */
+  var bar = document.querySelector('.progress');
+  if (bar) {
+    var ticking = false;
+    var updateBar = function () {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? h.scrollTop / max : 0;
+      bar.style.transform = 'scaleX(' + p + ')';
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
+    }, { passive: true });
+    updateBar();
   }
+
+  /* ---------- scrollspy: highlight the nav link in view ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.topbar__nav a'));
+  var sections = navLinks
+    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* Everything below is decorative — skip it for reduced-motion users. */
+  if (!motionOK || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('anim');
+
+  /* ---------- staggered reveals ---------- */
+  [['.projects', '.project'], ['.cards', '.card'], ['.spine', '.job'], ['.cols', '.reveal']]
+    .forEach(function (pair) {
+      document.querySelectorAll(pair[0]).forEach(function (group) {
+        group.querySelectorAll(pair[1]).forEach(function (el, i) {
+          el.style.setProperty('--d', (i * 0.09) + 's');
+        });
+      });
+    });
+
+  var seen = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        seen.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { seen.observe(el); });
+
+  /* ---------- count-up stats ---------- */
+  var countObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var raw = el.textContent.trim();
+      var target = parseInt(raw, 10) || 0;
+      var suffix = raw.replace(/[0-9]/g, '');
+      var start = null, dur = 1100;
+      var step = function (ts) {
+        if (start === null) start = ts;
+        var t = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat__num').forEach(function (el) { countObserver.observe(el); });
+
+  /* ---------- cursor spotlight + subtle tilt ---------- */
+  var tiltEls = document.querySelectorAll('.card, .project__link');
+  tiltEls.forEach(function (el) {
+    var canTilt = el.classList.contains('card') && !el.classList.contains('card--accent');
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      el.style.setProperty('--mx', x + 'px');
+      el.style.setProperty('--my', y + 'px');
+      if (canTilt) {
+        var rx = ((y / r.height) - 0.5) * -6;
+        var ry = ((x / r.width) - 0.5) * 6;
+        el.style.transform = 'translateY(-4px) perspective(700px) rotateX(' +
+          rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      }
+    });
+    el.addEventListener('pointerleave', function () {
+      if (canTilt) el.style.transform = '';
+    });
+  });
+
+  /* ---------- hero parallax on the monogram ---------- */
+  var mono = document.querySelector('.hero__portrait .monogram');
+  if (mono) {
+    var pTicking = false;
+    var parallax = function () {
+      var offset = Math.min(window.scrollY, 600) * 0.08;
+      mono.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+      pTicking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!pTicking) { requestAnimationFrame(parallax); pTicking = true; }
+    }, { passive: true });
+  }
+})();
 </script>
 
 </body>
